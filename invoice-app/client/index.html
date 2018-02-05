@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hyperledger Fabric Invoice Application</title>
+    <link rel="icon" href="favicon.png" type="image/gif">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body ng-app="application" ng-controller="appController">
+    <div class="jumbotron">
+      <div id="header">Hyperledger Fabric Invoice Application</div>
+    </div>
+
+    <div id="body">
+      <div class="form-group">
+        <p><input id="getAllInvoices" type="submit" value="Get all invoices" class="btn btn-primary" ng-click="getAllInvoices()"></p>
+      </div>
+
+      <table id="all_invoices" class="table" align="center">
+
+        <tr>
+          <th>SGSTN</th>
+          <th>SState</th>
+          <th>InvoiceNo</th>
+          <th>Date</th>
+          <th>CGSTN</th>
+          <th>CName</th>
+          <th>BillAdd</th>
+          <th>ShipAdd</th>
+          <th>TaxableAmount</th>
+          <th>TotalTax</th>
+          <th>InvoiceTotal</th>
+        </tr>
+
+        <tr ng-repeat="invoice in all_invoices">
+          <td>{{invoice.sgstn}}</td>
+          <td>{{invoice.sstate}}</td>
+          <td>{{invoice.invoiceno}}</td>
+          <td>{{invoice.date}}</td>
+          <td>{{invoice.cgstn}}</td>
+          <td>{{invoice.cname}}</td>
+          <td>{{invoice.billadd}}</td>
+          <td>{{invoice.shipadd}}</td>
+          <td>{{invoice.taxableamount}}</td>
+          <td>{{invoice.totalTax}}</td>
+          <td>{{invoice.invoicetotal}}</td>
+        </tr>
+      </table>
+
+      <div class="form-group">
+        <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Invoice Id</h5>
+        <form class="form-inline">
+          <input id="createName" class="form-control" type="text" placeholder="Enter ID" ng-model="invoice_id"><span>
+          <input id="querySubmit" type="submit" value="Get Invoice" class="btn btn-primary" ng-click="getInvoice()"></span>
+        </form>
+      </div>
+
+      <table id="one_invoice" class="table" align="center">
+
+        <tr>
+          <th>SGSTN</th>
+          <th>SState</th>
+          <th>InvoiceNo</th>
+          <th>Date</th>
+          <th>CGSTN</th>
+          <th>CName</th>
+          <th>BillAdd</th>
+          <th>ShipAdd</th>
+          <th>TaxableAmount</th>
+          <th>TotalTax</th>
+          <th>InvoiceTotal</th>
+        </tr>
+
+        <tr>
+          <td>{{one_invoice.sgstn}}</td>
+          <td>{{one_invoice.sstate}}</td>
+          <td>{{one_invoice.invoiceno}}</td>
+          <td>{{one_invoice.date}}</td>
+          <td>{{one_invoice.cgstn}}</td>
+          <td>{{one_invoice.cname}}</td>
+          <td>{{one_invoice.billadd}}</td>
+          <td>{{one_invoice.shipadd}}</td>
+          <td>{{one_invoice.taxableamount}}</td>
+          <td>{{one_invoice.totalTax}}</td>
+          <td>{{one_invoice.invoicetotal}}</td>
+        </tr>
+      </table>
+    </br>
+      <div class="form-group" id="create_form">
+        <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_invoice}}</h5>
+        <br>
+        Enter Reference id: <input class="form-control" type="text" placeholder="Ex: 11" ng-model="invoice.id">
+        Enter SGSTN: <input class="form-control" type="text" placeholder="Ex: 0239L" ng-model="invoice.sgstn">
+        Enter State: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.sstate">
+        Enter Invoice No: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.invoiceno">
+        Enter Date: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.date">
+        Enter CGSTN: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.cgstn">
+        Enter Customer Name: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.cname">
+        Enter Bill Address: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.billadd">
+        Enter Shipping Address: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.shipadd">
+        Enter Taxable Amount: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.taxableamount">
+        Enter Total Tax: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.totalTax">
+        Enter Total Amount: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="invoice.invoicetotal">
+        <input id="createSubmit" type="submit" value="Create Invoice" class="btn btn-primary" ng-click="createInvoice()">
+      </div>
+
+    </div>
+  </body>
+    <!-- requiring the angular page -->
+    <script type="text/javascript" src="app.js"> </script>
+</html>
