@@ -17,9 +17,9 @@
 <br>
 <h2> Installation for MacOS</h2>
 <li>
-  <ul>curl -V</ul> 
-  <ul>Check https://nodejs.org/en/download/ for installing Node and NPM</ul>
-  <ul>Installing GO
+  <ul><h3>curl -V</h3></ul> 
+  <ul><h3>Check https://nodejs.org/en/download/ for installing Node and NPM</h3></ul>
+  <ul><h3>Installing GO</h3>
     <li>
       <ul>cd ~</ul>
       <ul>sudo curl -O https://storage.googleapis.com/golang/go1.9.2.darwin-amd64.pkg (Check version at https://golang.org/dl/)</ul>
